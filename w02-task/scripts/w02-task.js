@@ -13,8 +13,13 @@
 
 
 // NAME -----------------------------------------------------------------------------
-const fullName = 'Alexander Cyril'
-document.querySelector('#name').textContent = fullName;
+// const fullName = 'Alexander Cyril'
+// document.querySelector('#name').textContent = fullName;
+
+const fullName = 'Alexander Cyril';
+const nameElement = document.querySelector('#name');
+nameElement.innerHTML = `<strong>${fullName}</strong>`;
+
 
 // CURRENT YEAR ---------------------------------------------------------------------
 const currentYear = new Date().getFullYear();
