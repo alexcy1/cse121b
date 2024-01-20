@@ -93,7 +93,7 @@ function findElementById(id) {
     const isMember = findElementById("member").checked;
 
     const total = calculateTotal(subtotal, isMember);
-    totalSpan.textContent = `$ ${total.toFixed(2)}`;
+    totalSpan.textContent = `$${total.toFixed(2)}`;
   });
   
 
