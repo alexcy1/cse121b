@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+  
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Menu Display</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles/main.css">
 
 
 <style>
@@ -21,16 +22,27 @@
   }
   
 </style>
-
 </head>
+
+
 <body>
-  <!-- Header -->
-  <header class="bg-dark text-white py-4">
-    <div class="container text-center">
-      <h3>Menu Display</h3>
+  <nav>
+    <ul id="menu">
+      <li><a id="toggleMenu">&equiv;</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="w01-task.html">W1 Task</a></li>
+      <li><a href="w03-task.html">W3 Task</a></li>
+      <li><a href="w04-task.html">W4 Task</a></li>
+      <li><a href="w05-task.html">W5 Task</a></li>
+      <li><a href="project.html" class="active">Project</a></li>
+    </ul>
+  </nav>
+  <main id="gridly">
+    <h1>Restaurant Food Menu</h1>
+
+    <div id="temples">
     </div>
-  </header>
-  <br>
+  </main>
   
   <div class="container" style="float:right;">
   <div class="container">
@@ -109,6 +121,20 @@
       </div>
     </div>
 
+  
+
+  <footer>
+    &copy;<span id="year"></span> | Week 05 - Fetching Temple Data | CSE 121b
+  </footer>
+
+  <script src="scripts/main.js"></script>
+  
+  <script>
+    document.getElementById("year").innerHTML = new Date().getFullYear();
+  </script>
+
+  <script src="scripts/w05-task.js"></script>
   <script src="scripts/project.js"></script>
+
 </body>
 </html> 
