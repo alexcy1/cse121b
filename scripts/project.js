@@ -106,7 +106,7 @@ function addToCart(itemId) {
     const quantityInput = document.getElementById(`quantity-${itemId}`);
     const quantity = parseInt(quantityInput.value, 10);
 
-    if (quantity > 0) {
+    if (quantity >= 0) {
         const selectedItem = {
             itemId: itemId,
             quantity: quantity
@@ -117,23 +117,46 @@ function addToCart(itemId) {
 
         if (existingItemIndex !== -1) {
             // Update quantity if the item is already in the cart
-            cartItems[existingItemIndex].quantity += quantity;
+            const previousQuantity = cartItems[existingItemIndex].quantity;
+            const quantityChange = quantity - previousQuantity;
+
+            // Update quantity and calculate the change in price
+            cartItems[existingItemIndex].quantity = quantity;
+
+            // Find the corresponding menu item
+            const menuItem = menuArray.find(menuItem => menuItem.id === itemId);
+
+            if (menuItem) {
+                // Update the cart display
+                updateCartDisplay();
+
+                // Calculate the change in price
+                const priceChange = menuItem.price * quantityChange;
+
+                // Update total number of items in the cart
+                const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
+                document.getElementById(`total-items`).textContent = totalItems;
+
+                // Update amount, subtotal, and total with the price change
+                initialTotal += priceChange;
+                updateCartDisplay();
+            }
         } else {
             // Add the item to the cart if it's not already present
             cartItems.push(selectedItem);
+
+            // Update the cart display or perform any other actions
+            updateCartDisplay();
+
+            // Calculate total number of items in the cart
+            const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById(`total-items`).textContent = totalItems;
         }
-
-        // Update the cart display or perform any other actions
-        updateCartDisplay();
-
-        // Calculate total number of items in the cart
-        const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
-        document.getElementById(`total-items`).textContent = totalItems;
     }
 }
 
 
-// Previous functions...
+
 function updateCartDisplay() {
     const cartList = document.getElementById(`cart-list`);
     const cartDiscount = document.getElementById(`cart-discount`);
@@ -153,13 +176,23 @@ function updateCartDisplay() {
         if (menuItem) {
             const listItem = document.createElement('li');
             listItem.innerHTML = `
-                ${menuItem.name} - Quantity: ${item.quantity} - Cost: $${(menuItem.price * item.quantity).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                <div class="d-flex align-items-center mb-0">
+                    <img src="${menuItem.image || ''}" class="cart-item-img rounded mr-2" alt="Cart Item Image" style="width: 40px; height: 30px;">
+                    <div>
+                        <p>${menuItem.name} - Quantity: ${item.quantity} - Cost: $${(menuItem.price * item.quantity).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</p>
+                    </div>
+                </div>
             `;
             cartList.appendChild(listItem);
             initialSubtotal += menuItem.price * item.quantity;
             initialTotal += menuItem.price * item.quantity;
         }
     });
+
+    // ... rest of the code remains unchanged
+
+
+    
 
     // Calculate tax (6% of the total cost)
     const taxPercentage = 6;
