@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu Display</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+
+
+<style>
+  .card {
+    width: 18rem;
+    margin-bottom: 20px;
+  }
+  
+  .card img {
+    height: 200px; 
+    width: auto; 
+    object-fit: cover; 
+  }
+  
+</style>
+
+</head>
+<body>
+  <!-- Header -->
+  <header class="bg-dark text-white py-4">
+    <div class="container text-center">
+      <h3>Menu Display</h3>
+    </div>
+  </header>
+  <br>
+  
+  <div class="container" style="float:right;">
+  <div class="container">
+    <div class="row" id="menu-container">
+      <!-- Menu items are dynamically displayed here with javascript-->
+    </div>
+  </div>
+
+  <div class="container" id="navigation-buttons">
+    <!-- Navigation buttons will be added dynamically here -->
+</div>
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col">
+        <h3 style="color:green;">Added Items</h3>
+        <ul id="cart-list" class="list-unstyled">
+          <!-- Cart items are dynamically displayed here with javascript-->
+        </ul>
+        <p style="color:purple;">
+          <b>TOTAL ITEMS: <span id="total-items">0</span></b></p>
+        <p></p> <p></p>
+
+        
+            <!-- RESULT DISPLAY -->
+            <div class="row mt-4">
+              <div class="col-md-6">
+                <div class="info-item d-flex align-items-center">
+                  <i class="bi bi-egg-fried flex-shrink-0"></i>
+                  <div id="initial-subtotal">
+                    <h3>Amount: $<span id="cart-amount">0.00</span> </h3>
+                  </div>
+                </div>
+              </div><!-- End Amount -->
+        
+              <div class="col-md-6">
+                <div class="info-item d-flex align-items-center">
+                  <i class="bi bi-egg-fried flex-shrink-0"></i>
+                  <div id="discount">
+                    <h3>Discount: $<span id="cart-discount">0.00</span> </h3>
+                  </div>
+                </div>
+              </div><!-- End Discount -->
+        
+              <div class="col-md-6">
+                <div class="info-item d-flex align-items-center">
+                  <i class="bi bi-egg-fried flex-shrink-0"></i>
+                  <div id="subtotal">
+                    <h3>Subtotal: $<span id="cart-subtotal">0.00</span> </h3>
+                  </div>
+                </div>
+              </div><!-- End Subtotal -->
+        
+              <div class="col-md-6">
+                <div class="info-item d-flex align-items-center">
+                  <i class="bi bi-egg-fried flex-shrink-0"></i>
+                  <div id="tax">
+                    <h3>Tax: $<span id="cart-tax-amount">0.00</span> </h3>
+                  </div>
+                </div>
+              </div><!-- End Tax -->
+        
+              <div class="col-md-6">
+                <div class="info-item d-flex align-items-center">
+                  <i class="bi bi-egg-fried flex-shrink-0"></i>
+                  <div id="total">
+                    <h2 style="color:red;">Total: $<span id="cart-total">0.00</span> </h2>
+                  </div>
+                </div>
+              </div><!-- End Total -->
+            </div>
+          </div>
+        </div>
+        <br><br>
+
+      </div>
+    </div>
+
+  <script src="script.js"></script>
+</body>
+</html> 
